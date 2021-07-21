@@ -38,11 +38,13 @@ function Categories() {
                 <button type="submit">{onEdit ? 'Update' : 'Create'}</button>
             </form> */}
             <div className="col">
+                <ul id="list" className="list">
                 {
                     categories.map(category => (
-                       <Category key={category.id} category={category}/>
-                    ))
-                }
+                        <Category key={category.id} category={category}/>
+                        ))
+                    }
+                </ul>
             </div>
         </div>
     )

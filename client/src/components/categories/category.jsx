@@ -9,6 +9,7 @@ export const Category = ({category}) => {
         <li >
             {category.name}
             <button 
+            className="delete-btn"
             onClick={() => deleteCategory(category._id)}
             >X</button>
         </li>
