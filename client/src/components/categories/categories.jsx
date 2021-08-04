@@ -31,6 +31,7 @@ function Categories() {
 
     return (
         <div className="categories">
+            <h2>Categories</h2>
             {/* <form onSubmit={createCategory}>
                 <label htmlFor="category">Category</label>
                 <input type="text" name="category" value={category} required

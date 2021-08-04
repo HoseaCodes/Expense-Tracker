@@ -12,7 +12,7 @@ export const AddCategory = () => {
         setName('')
     }
     return (
-        <>
+        <div>
             <h3>Add new category</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-control">
@@ -21,6 +21,6 @@ export const AddCategory = () => {
                 </div>
                 <button className="btn">Add Category</button>
             </form>
-        </>
+        </div>
     )
 }
