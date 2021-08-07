@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 
-const TransactionSchema = new mongoose.Schema({
+const transactionSchema = new mongoose.Schema({
+    transaction_id: {
+        type: String,
+        required: true,
+        trim: true,
+        unique: true
+    },
     text: {
         type: String,
         trim: true,
@@ -10,10 +16,14 @@ const TransactionSchema = new mongoose.Schema({
         type: Number,
         required: [true, 'Please add a positive or negative number']
     },
+    category: {
+        type: String,
+        required: true
+    },
     createdAt: {
         type : Date,
         default: Date.now
         }
     })
 
-    module.exports = mongoose.model('Transaction', TransactionSchema);
+    module.exports = mongoose.model('Transaction', transactionSchema);

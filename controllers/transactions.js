@@ -19,9 +19,15 @@ const getTransactions = async (req, res, next) => {
 
 const addTransaction = async (req, res, next) => {
     try {
-        const {text, amount } = req.body;
+        const {transaction_id, text, amount, category, createdAt } = req.body;
     
-        const newTransaction = await Transaction.create(req.body)
+        // const newTransaction = await Transaction.create(req.body)
+        const newTransaction = await Transaction({
+            transaction_id, text, amount, category, createdAt
+        })
+
+        await newTransaction.save()
+        
         return res.status(201).json({ 
             success: true,
             data: newTransaction,
