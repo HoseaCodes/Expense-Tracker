@@ -17,7 +17,7 @@ export default (state, action ) => {
                 categories: state.categories.filter(
                     category => category._id !== action.payload)
             }
-        case 'GET_TRANSACTION':
+        case 'GET_TRANSACTIONS':
             return {
                 ...state,
                 loading: false,
