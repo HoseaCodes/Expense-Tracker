@@ -21,14 +21,24 @@ async function getCategories(req, res) {
 async function createCategory(req, res) {
 	try {
 		const newCategory = req.body;
-		
-        const category = await Category.create(newCategory);
 
-        return res.status(201).json({ 
-            success: true,
-            data: category,
-            msg: "Created a new category" 
-        });
+		const exisitingCategory = await Category.findOne({newCategory});
+
+		if (exisitingCategory) {
+
+			return res.status(400).json({msg: 'This category already exists.'})
+		
+		} else {
+
+			const category = await Category.create(newCategory);
+	
+			return res.status(201).json({ 
+				success: true,
+				data: category,
+				msg: "Created a new category" 
+			});
+		}
+		
 	} catch (err) {
 		return res.status(500).json({ 
             success: false,
