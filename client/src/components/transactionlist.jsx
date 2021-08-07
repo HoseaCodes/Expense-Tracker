@@ -13,19 +13,12 @@ export const TransactionList = () => {
   
     return (
         <>
-            <h3>History</h3>
+            <h3>Current Month</h3>
             <ul id="list" className="list">
                 {transactions.map(transaction => (
                     <Transaction key={transaction.id} transaction={transaction}/>
                 ))}
             </ul>
-            <h3>Archives</h3>
-            <ul id="list" className="list">
-                {transactions.map(transaction => (
-                    <Archive key={transaction.id} transaction={transaction}/>
-                ))}
-            </ul>
-
         </>
     )
 }

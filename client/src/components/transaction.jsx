@@ -18,7 +18,7 @@ export const Transaction = ({transaction}) => {
         alignItems: 'center',
         width: '100%'
     }
-
+    if (timeFormater === moment(Date.now()).format('MM/YYYY')) {
     return (
         <div style={transactionStyle}>
             <li className={transaction.amount < 0 ? 'minus' : 'plus'}>
@@ -31,4 +31,7 @@ export const Transaction = ({transaction}) => {
             <span>{timeFormater}</span>
         </div>
     )
+    } else {
+        return null
+    }
 }
