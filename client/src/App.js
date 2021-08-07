@@ -7,6 +7,7 @@ import {AddTransaction} from './components/addtransaction';
 import {GlobalProvider} from './context/GlobalState';
 import Categories from './components/categories/categories';
 import { AddCategory } from './components/categories/addcategory';
+import { Archive } from './components/archive';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <TransactionList/>
           <AddTransaction />
         </div>
+        <Archive/>
      </div>
     </GlobalProvider>
   );
