@@ -14,11 +14,23 @@ export const TransactionList = () => {
     return (
         <>
             <h3>Current Month</h3>
-            <ul id="list" className="list">
-                {transactions.map(transaction => (
-                    <Transaction key={transaction.id} transaction={transaction}/>
-                ))}
-            </ul>
+            <table border='0'>
+            <thead> 
+                <tr> 
+                    <th>Type</th> 
+                    <th>Description</th> 
+                    <th>Amount</th> 
+                    <th>Date</th> 
+                    <th><span>🗑</span></th> 
+                </tr> 
+            </thead>
+
+                <tbody id="list" className="list">
+                        {transactions.map(transaction => (
+                            <Transaction key={transaction.id} transaction={transaction}/>
+                        ))}
+                </tbody>
+            </table>
         </>
     )
 }

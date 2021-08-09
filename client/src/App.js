@@ -20,8 +20,8 @@ function App() {
           <Balance/>
           <IncomeExpense/>
           <TransactionList/>
-          <AddTransaction />
-        </div>
+         <AddTransaction />
+          </div>
         <Archive/>
      </div>
     </GlobalProvider>

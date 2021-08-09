@@ -90,7 +90,7 @@ select {
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: #4962a2;
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -102,7 +102,8 @@ select {
 }
 
 .btn:focus,
-.delete-btn:focus {
+.delete-btn:focus,
+.delete-btn-table:focus {
   outline: 0;
 }
 
@@ -123,11 +124,11 @@ select {
   margin: 10px 0;
 }
 
-.list li.plus {
+.plus {
   border-right: 5px solid #2ecc71;
 }
 
-.list li.minus {
+.minus {
   border-right: 5px solid #c0392b;
 }
 
@@ -147,7 +148,24 @@ select {
   transition: opacity 0.3s ease;
 }
 
-.list li:hover .delete-btn {
+.delete-btn-table {
+  cursor: pointer;
+  background-color: #e74c3c;
+  color: #fff;
+  font-size: 20px;
+  border: 0;
+  padding: 2px 5px;
+  line-height: 20px;
+  opacity: 0.8;
+  /* right: 25% !important;
+  transform: translate(-100%, -50%);
+  position: absolute;
+  top: 80%;
+  transition: opacity 0.3s ease; */
+}
+
+.list li:hover .delete-btn,
+.delete-btn-table:hover {
   opacity: 1;
 }
 
@@ -156,4 +174,45 @@ select {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-column-gap: 1rem;
   justify-items: center;
+}
+
+.expense {
+  width: auto;
+  padding: 10%;
+  height: 50%;
+  background: #f9d8cf;
+  border-radius: 6px;
+}
+.income {
+  width: auto;
+  padding: 10%;
+  background: #f9cea3;
+  border-radius: 6px;
+}
+
+td,
+th {
+  border: 1px solid #999;
+  padding: 20px;
+}
+
+/* td:last-child,
+th:last-child {
+  padding: 0;
+  background-color: #f7f7f7 !important;
+  border: none !important;
+  box-shadow: none !important;
+} */
+
+td {
+  border-color: #333;
+}
+
+table {
+  border-spacing: 10px;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: var(--box-shadow);
+  margin: 20px 0;
+  padding: 20pxß;
 }

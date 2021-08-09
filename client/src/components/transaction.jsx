@@ -10,26 +10,24 @@ export const Transaction = ({transaction}) => {
 
     const timeFormater = moment.utc(transaction.createdAt).format('MM/YYYY')
 
-    const transactionStyle = {
-        display: 'grid',
-        gridTemplateColumns: '1fr 20px',
-        gridColumnGap: '12px',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%'
-    }
+ 
+    const type = transaction.amount < 0 ? 'Expense' : 'Income';
+
     if (timeFormater === moment(Date.now()).format('MM/YYYY')) {
     return (
-        <div style={transactionStyle}>
-            <li className={transaction.amount < 0 ? 'minus' : 'plus'}>
-                {transaction.text}
-                <span>{sign}${Math.abs(transaction.amount)}</span>
-                <button 
-                onClick={() => deleteTransaction(transaction._id)}
-                className="delete-btn">X</button>
-            </li>
-            <span>{timeFormater}</span>
-        </div>
+        <>
+        <tr className={transaction.amount < 0 ? 'minus' : 'plus'}>
+            <td><span className={transaction.amount < 0 ? 'expense' : 'income'}>{type}</span></td>
+            <td>{transaction.text}</td> 
+            <td>{sign}${Math.abs(transaction.amount)}</td>
+            <td>{timeFormater}</td>
+            <td>
+            <button className="delete-btn-table"
+            onClick={() => deleteTransaction(transaction._id)}
+            >X</button>
+            </td>
+        </tr>
+        </>
     )
     } else {
         return null
