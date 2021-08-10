@@ -193,7 +193,7 @@ select {
 td,
 th {
   border: 1px solid #999;
-  padding: 20px;
+  padding: 20px !important;
 }
 
 /* td:last-child,
@@ -215,4 +215,12 @@ table {
   box-shadow: var(--box-shadow);
   margin: 20px 0;
   padding: 20pxß;
+}
+
+tfoot {
+  text-align: center;
+}
+
+.archive {
+  display: none !important;
 }

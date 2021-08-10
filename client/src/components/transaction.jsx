@@ -18,6 +18,7 @@ export const Transaction = ({transaction}) => {
         <>
         <tr className={transaction.amount < 0 ? 'minus' : 'plus'}>
             <td><span className={transaction.amount < 0 ? 'expense' : 'income'}>{type}</span></td>
+            <td>{transaction.category}</td>
             <td>{transaction.text}</td> 
             <td>{sign}${Math.abs(transaction.amount)}</td>
             <td>{timeFormater}</td>
