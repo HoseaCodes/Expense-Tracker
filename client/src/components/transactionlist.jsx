@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react'
-import {Transaction} from './transaction';
-import {GlobalContext} from '../context/GlobalState';
+import React, { useContext, useEffect, useState } from 'react'
+import { Transaction } from './transaction';
+import { GlobalContext } from '../context/GlobalState';
 import moment from 'moment-timezone'
 
 export const TransactionList = () => {
-    const {transactions, getTransactions} = useContext(GlobalContext)
+    const { transactions, getTransactions } = useContext(GlobalContext)
     const [liability, setLiability] = useState(0)
     const [disposable, setDisposable] = useState(0)
     const [income, setIncome] = useState(0)
@@ -14,7 +14,7 @@ export const TransactionList = () => {
         getTotals(transactions);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    
+
     function getTotals(transactions) {
         let totalLiability = 0
         let disposableIncome = 0
@@ -38,21 +38,22 @@ export const TransactionList = () => {
         <>
             <h3>Current Month</h3>
             <table class="table" border='0'>
-                <thead> 
-                    <tr> 
-                        <th>Type</th> 
-                        <th>Category</th> 
-                        <th>Description</th> 
-                        <th>Amount</th> 
-                        <th>Date</th> 
-                        <th><span>🗑</span></th> 
-                    </tr> 
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Budget</th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th><span>🗑</span></th>
+                    </tr>
                 </thead>
 
                 <tbody id="list" className="list">
-                        {transactions.map(transaction => (
-                            <Transaction key={transaction.id} transaction={transaction}/>
-                        ))}
+                    {transactions.map(transaction => (
+                        <Transaction key={transaction.id} transaction={transaction} />
+                    ))}
                 </tbody>
                 <tfoot>
                     <tr>

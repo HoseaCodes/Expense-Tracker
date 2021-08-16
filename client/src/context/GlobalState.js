@@ -1,4 +1,4 @@
-import React, {createContext, useReducer} from 'react';
+import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
 import axios from 'axios';
 
@@ -14,11 +14,11 @@ const initialState = {
 export const GlobalContext = createContext(initialState);
 
 //Provider component
-export const GlobalProvider = ({children}) => {
+export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
     //Actions
-    async function getTransactions () {
+    async function getTransactions() {
         try {
             const res = await axios.get('/api/transactions');
             dispatch({
@@ -36,7 +36,7 @@ export const GlobalProvider = ({children}) => {
     async function deleteTransaction(id) {
         try {
             await axios.delete(`/api/transactions/${id}`);
-            
+
             dispatch({
                 type: 'DELETE_TRANSACTION',
                 payload: id
@@ -47,7 +47,7 @@ export const GlobalProvider = ({children}) => {
                 payload: err.response.data.error
             })
         }
-        
+
     }
     async function addTransaction(transaction) {
         const config = {
@@ -57,7 +57,7 @@ export const GlobalProvider = ({children}) => {
         }
         try {
             const res = await axios.post('/api/transactions', transaction, config);
-            
+
             dispatch({
                 type: 'ADD_TRANSACTION',
                 payload: res.data.data
@@ -68,13 +68,13 @@ export const GlobalProvider = ({children}) => {
                 payload: err.response.data.error
             })
         }
-        
+
     }
-    
+
     async function deleteCategory(id) {
         try {
             await axios.delete(`/api/categories/${id}`);
-            
+
             dispatch({
                 type: 'DELETE_CATEGORY',
                 payload: id
@@ -84,10 +84,10 @@ export const GlobalProvider = ({children}) => {
                 type: 'TRANSACTIONS_ERROR',
                 payload: err.response.data.error
             })
-        }    
+        }
     }
 
-    async function getCategories () {
+    async function getCategories() {
         try {
             const res = await axios.get('/api/categories');
             dispatch({
@@ -104,12 +104,12 @@ export const GlobalProvider = ({children}) => {
     }
 
     async function addCategories(category) {
-            const config = {
-                    headers: {
-                          'Content-Type': 'application/json'
-                        }
-                    }
-                    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        try {
             // if (onEdit) {
             //     const res = await axios.put(`/api/category/${category._id}`, {name: category}, config)
             //     dispatch({
@@ -117,19 +117,19 @@ export const GlobalProvider = ({children}) => {
             //         payload: res.data.data
             //     });
             //     } else {
-                    const res = await axios.post('/api/categories', { name: category }, config)
-                    dispatch({
-                        type: 'ADD_CATEGORIES',
-                        payload: res.data.data
-                    });
-                // }
-            } catch (err) {
+            const res = await axios.post('/api/categories', category, config)
+            dispatch({
+                type: 'ADD_CATEGORIES',
+                payload: res.data.data
+            });
+            // }
+        } catch (err) {
             dispatch({
                 type: 'CATEGORIES_ERROR',
                 payload: err
             })
         }
-      
+
     }
 
     return (<GlobalContext.Provider value={{

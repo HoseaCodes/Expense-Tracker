@@ -6,6 +6,9 @@ const categorySchema = new mongoose.Schema({
         required: true,
         trim: true,
         unique: true
+    },
+    budget: {
+        type: Number
     }
 }, {
     timestamps: true

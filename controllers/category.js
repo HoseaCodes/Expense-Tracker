@@ -20,30 +20,35 @@ async function getCategories(req, res) {
 
 async function createCategory(req, res) {
 	try {
-		const newCategory = req.body;
+		const { name, budget } = req.body
 
-		const exisitingCategory = await Category.findOne({newCategory});
+		const newCategory = await Category({
+			name, budget
+		});
+
+		const exisitingCategory = await Category.findOne({ newCategory });
 
 		if (exisitingCategory) {
 
-			return res.status(400).json({msg: 'This category already exists.'})
-		
+			return res.status(400).json({ msg: 'This category already exists.' })
+
 		} else {
 
 			const category = await Category.create(newCategory);
-	
-			return res.status(201).json({ 
+
+			return res.status(201).json({
 				success: true,
 				data: category,
-				msg: "Created a new category" 
+				msg: "Created a new category"
 			});
 		}
-		
+
 	} catch (err) {
-		return res.status(500).json({ 
-            success: false,
-            msg: 'Server Error'
-        })
+		console.log(err)
+		return res.status(500).json({
+			success: false,
+			msg: 'Server Error'
+		})
 	}
 }
 
@@ -53,8 +58,8 @@ async function deleteCategory(req, res) {
 		// You cannot delete a category if it has transaction associated with it.
 		if (transactions) {
 			return res
-			.status(400)
-			.json({ msg: "Please delete all transactions with a relationship." });
+				.status(400)
+				.json({ msg: "Please delete all transactions with a relationship." });
 		}
 		await Category.findByIdAndDelete(req.params.id);
 		res.json({ msg: "Deleted a category" });
