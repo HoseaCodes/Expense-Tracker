@@ -13,8 +13,8 @@ connectDB();
 const app = express();
 
 const client = new plaid.Client({
-  clientID: process.env.PLAID_CLIENT_ID || '6112a086e1b0f700118a07d0',
-  secret: process.env.PLAID_SECRET || 'd5979309df1f8af1c8ab7493ef8564',
+  clientID: process.env.PLAID_CLIENT_ID,
+  secret: process.env.PLAID_SECRET,
   env: plaid.environments.sandbox,
 });
 
