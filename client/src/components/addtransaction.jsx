@@ -19,14 +19,17 @@ export const AddTransaction = () => {
         }
 
         addTransaction(newTransaction);
+        setText('')
+        setAmount(0)
     }
+    console.log(categories)
     return (
         <>
             <h3>Add new transaction</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-control">
-                    <label htmlFor="text">Text</label>
-                    <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter text..." />
+                    <label htmlFor="text">Item</label>
+                    <input type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder="Enter expense or income..." />
                 </div>
                 
                 <div className="form-control">
@@ -36,7 +39,7 @@ export const AddTransaction = () => {
                     >
                         {
                             categories.map(category => (
-                                <option value={category._id} key={category._id}>
+                                <option value={category.name} key={category.name}>
                                     {category.name}
                                 </option>
                             ))
