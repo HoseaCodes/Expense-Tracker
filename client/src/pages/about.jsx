@@ -77,41 +77,14 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            {/* <hr className="mb-5" /> */}
             <section className="bg-about pt-5 mb-5">
                 <div class="container" style={{ height: '100%' }}>
                     <div class="row" style={{ height: 'inherit', alignContent: 'center' }}>
                         {aboutImgCardInfo.map((about) => {
-                            <AboutImgCard about={about} />
+                            return (
+                                <AboutImgCard about={about} />
+                            )
                         })}
-                        <div class="col-md-4 col-xl-3">
-                            <div class="card bg-c-blue order-card">
-                                <div class="card-block" style={{ height: '200px', backgroundSize: 'contain', backgroundImage: `url(https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces)` }}>
-                                </div>
-                            </div>
-                            <h3 className="mt-2" style={{ textAlign: 'center' }}>Title</h3>
-                        </div>
-                        <div class="col-md-4 col-xl-3">
-                            <div class="card bg-c-blue order-card">
-                                <div class="card-block" style={{ height: '200px', backgroundSize: 'contain', backgroundImage: `url(https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces)` }}>
-                                </div>
-                            </div>
-                            <h3 className="mt-2" style={{ textAlign: 'center' }}>Title</h3>
-                        </div>
-                        <div class="col-md-4 col-xl-3">
-                            <div class="card bg-c-blue order-card">
-                                <div class="card-block" style={{ height: '200px', backgroundSize: 'contain', backgroundImage: `url(https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces)` }}>
-                                </div>
-                            </div>
-                            <h3 className="mt-2" style={{ textAlign: 'center' }}>Title</h3>
-                        </div>
-                        <div class="col-md-4 col-xl-3">
-                            <div class="card bg-c-blue order-card">
-                                <div class="card-block" style={{ height: '200px', backgroundSize: 'contain', backgroundImage: `url(https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces)` }}>
-                                </div>
-                            </div>
-                            <h3 className="mt-2" style={{ textAlign: 'center' }}>Title</h3>
-                        </div>
                     </div>
                 </div>
             </section>

@@ -27,23 +27,19 @@ export const aboutCards = [
 
 export const aboutImgCardInfo = [
     {
-        title: 'title',
+        title: 'Announcements',
         img: 'https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces'
     },
     {
-        title: 'title',
+        title: 'Reviews',
         img: 'https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces'
     },
     {
-        title: 'title',
+        title: 'Press',
         img: 'https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces'
     },
     {
-        title: 'title',
-        img: 'https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces'
-    },
-    {
-        title: 'title',
+        title: 'Blog',
         img: 'https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/06/Types-of-graphic-design.jpg?auto=format&q=60&w=1860&h=1090&fit=crop&crop=faces'
     },
 ]
