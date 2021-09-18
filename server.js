@@ -29,6 +29,7 @@ if (process.env.NODE_ENV === 'development') {
 //Mounted Routes
 const tranasctionsRouter = require('./routes/transactions');
 const categoryRouter = require('./routes/category');
+const userRouter = require('./routes/user');
 
 app.get('/accounts', function (request, response, next) {
   client.getAccounts(accessToken, function (error, accountsResponse) {
@@ -88,6 +89,7 @@ app.post('/create_link_token', async (request, response) => {
 
 app.use('/api/transactions', tranasctionsRouter)
 app.use('/api/categories', categoryRouter)
+app.use('/user', userRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
