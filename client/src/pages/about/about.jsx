@@ -1,15 +1,12 @@
 import React from 'react';
 import AboutCard from '../../components/cards/aboutcard';
 import AboutImgCard from '../../components/cards/aboutimgcard';
-import Footer from '../../components/footer';
-import Nav from '../../components/nav/nav';
 import { aboutCards, aboutImgCardInfo } from '../../data/about';
 import './about.css';
 
 const About = () => {
     return (
         <>
-            <Nav />
             <section className="bg-about">
                 <div className="container text-white hero-title">
                     <div>
@@ -108,7 +105,6 @@ const About = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
         </>
     )
 }

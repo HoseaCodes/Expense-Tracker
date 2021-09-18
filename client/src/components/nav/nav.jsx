@@ -2,7 +2,7 @@ import React from 'react';
 import Plaid from '../../pages/plaid';
 import { VscGear } from "react-icons/vsc";
 
-const Nav = () => {
+const Nav = ({ linkToken, setLinkToken, plaidData, setPlaidData }) => {
     return (
         <>
             <header className="d-flex align-items-center px-5 flex-wrap justify-content-center py-3 border-bottom">
@@ -28,7 +28,7 @@ const Nav = () => {
                         </ul>
                     </li>
                     <li className="nav-item"><a href="/login" className="loginbtn btn btn-outline-dark">Login</a></li>
-                    <li className="nav-item"><Plaid /></li>
+                    <li className="nav-item"><Plaid linkToken={linkToken} setLinkToken={setLinkToken} plaidData={plaidData} setPlaidData={setPlaidData} /></li>
 
                 </ul>
             </header>

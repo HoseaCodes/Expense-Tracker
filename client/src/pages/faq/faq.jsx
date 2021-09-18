@@ -1,14 +1,11 @@
 import React from 'react';
 import QACard from '../../components/cards/qacard';
-import Footer from '../../components/footer';
-import Nav from '../../components/nav/nav';
 import { QA } from '../../data/faq';
 import './faq.css';
 
 const FAQ = () => {
     return (
         <>
-            <Nav />
             <section className="ftco-section ftco-faqs">
                 <div className="container">
                     <div className="row">
@@ -39,7 +36,6 @@ const FAQ = () => {
                     </div>
                 </div>
             </section>
-            <Footer />
         </>
     )
 }
