@@ -5,6 +5,7 @@ import axios from 'axios';
 const initialState = {
     transactions: [],
     categories: [],
+    user: [],
     error: null,
     loading: true,
     onEdit: false
@@ -18,6 +19,56 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
     //Actions
+    async function getUser(token) {
+        try {
+            const res = await axios.get("/user/infor", {
+                headers: { Authorization: token },
+            });
+            dispatch({
+                type: 'GET_USER',
+                payload: res.data.data
+            })
+
+        } catch (err) {
+            dispatch({
+                type: 'USER_ERROR',
+                payload: err.response.data.error
+            })
+        }
+    };
+    async function loginSubmit(user) {
+        try {
+            const res = await axios.post("api/user/login", { ...user });
+            localStorage.setItem("firstLogin", true);
+            dispatch({
+                type: 'LOGIN_USER',
+                payload: res.data.data
+            })
+        } catch (err) {
+            dispatch({
+                type: 'USER_ERROR',
+                payload: err.response.data.error
+            })
+        }
+
+    };
+    async function register(user) {
+
+        try {
+            const res = await axios.post("api/user/register", { ...user });
+            localStorage.setItem("firstLogin", true);
+            dispatch({
+                type: 'REGISTER_USER',
+                payload: res.data.data
+            })
+        } catch (err) {
+            dispatch({
+                type: 'USER_ERROR',
+                payload: err.response.data.error
+            })
+        }
+
+    };
     async function getTransactions() {
         try {
             const res = await axios.get('/api/transactions');
@@ -81,7 +132,7 @@ export const GlobalProvider = ({ children }) => {
             });
         } catch (err) {
             dispatch({
-                type: 'TRANSACTIONS_ERROR',
+                type: 'CATEGORIES_ERROR',
                 payload: err.response.data.error
             })
         }
@@ -97,7 +148,7 @@ export const GlobalProvider = ({ children }) => {
 
         } catch (err) {
             dispatch({
-                type: 'TRANSACTIONS_ERROR',
+                type: 'CATEGORIES_ERROR',
                 payload: err
             })
         }
@@ -135,6 +186,7 @@ export const GlobalProvider = ({ children }) => {
     return (<GlobalContext.Provider value={{
         transactions: state.transactions,
         categories: state.categories,
+        user: state.user,
         error: state.error,
         loading: state.loading,
         onEdit: state.onEdit,
@@ -144,6 +196,9 @@ export const GlobalProvider = ({ children }) => {
         getCategories,
         addCategories,
         deleteCategory,
+        getUser,
+        loginSubmit,
+        register
     }}>
         {children}
     </GlobalContext.Provider>)

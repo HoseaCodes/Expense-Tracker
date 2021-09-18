@@ -217,3 +217,7 @@ tfoot {
 .text-custom {
   color: #0062ff !important;
 }
+
+.loginbtn {
+  padding-right: 1rem;
+}

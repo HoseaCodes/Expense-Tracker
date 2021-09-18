@@ -1,5 +1,28 @@
-export default (state, action ) => {
-    switch(action.type) {
+export default (state, action) => {
+    switch (action.type) {
+        case 'GET_USER':
+            return {
+                ...state,
+                loading: false,
+                user: action.payload
+            }
+        case 'LOGIN_USER':
+            return {
+                ...state,
+                loading: false,
+                user: action.payload
+            }
+        case 'REGISTER_USER':
+            return {
+                ...state,
+                loading: false,
+                user: action.payload
+            }
+        case 'USER_ERROR':
+            return {
+                ...state,
+                error: action.payload
+            }
         case 'GET_CATEGORIES':
             return {
                 ...state,
@@ -16,6 +39,11 @@ export default (state, action ) => {
                 ...state,
                 categories: state.categories.filter(
                     category => category._id !== action.payload)
+            }
+        case 'CATEGORIES_ERROR':
+            return {
+                ...state,
+                error: action.payload
             }
         case 'GET_TRANSACTIONS':
             return {
@@ -37,9 +65,9 @@ export default (state, action ) => {
         case 'ADD_TRANSACTION':
             return {
                 ...state,
-                transactions: [...state.transactions, action.payload ]
+                transactions: [...state.transactions, action.payload]
             }
-        default: 
-        return state;
+        default:
+            return state;
     }
 }
