@@ -11,13 +11,16 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     firstName: {
-        type: String
+        type: String,
+        trim: true
     },
     lastName: {
-        type: String
+        type: String,
+        trim: true
     },
     avatar: {
         type: String
@@ -36,6 +39,10 @@ const UserSchema = new mongoose.Schema({
     online: {
         type: Boolean
     },
+    role: {
+        type: Number,
+        default: 0
+    },
     text: {
         type: String,
         trim: true,
@@ -44,10 +51,15 @@ const UserSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean
     },
-    createdAt: {
-        type : Date,
-        default: Date.now
-        }
-    })
 
-    module.exports = mongoose.model('User', UserSchema);
+    transactions: {
+        type: Array,
+        default: []
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+})
+
+module.exports = mongoose.model('User', UserSchema);
