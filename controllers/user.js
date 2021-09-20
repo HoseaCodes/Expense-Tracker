@@ -5,12 +5,13 @@ const jwt = require('jsonwebtoken');
 const userCtrl = {
     register,
     refreshToken,
-    login
+    login,
+    updateProfile
 }
 
 async function register(req, res) {
     try {
-        const { name, email, password } = req.body;
+        const { username, name, email, password } = req.body;
         const user = await Users.findOne({ email })
         if (user) return res.status(400).json({ msg: "The email already exists" })
 
@@ -22,7 +23,7 @@ async function register(req, res) {
 
         //Create new user instance
         const newUser = new Users({
-            name, email, password: passwordHash
+            username, name, email, password: passwordHash
         })
         // Save mongodb
         await newUser.save()
@@ -79,13 +80,34 @@ async function login(req, res) {
             httpOnly: true,
             path: '/user/refresh_token'
         })
-        res.json({ accesstoken })
+        res.json({ status: "Success", accesstoken, user })
         // res.json({ msg: "Login successful" })
 
     } catch (err) {
         return res.status(500).json({ msg: err.message })
     }
 }
+
+async function updateProfile(req, res) {
+    try {
+        const { isAdmin, text, role, name, avatar, username, address, phone, bio } = req.body;
+        console.log(req.body)
+        const user = await Users.findOneAndUpdate({ _id: req.params.id }, {
+            isAdmin, text, role, name, avatar, username, address, phone, bio
+        })
+
+        res.json({
+            status: 'Updated profile',
+            user
+        })
+    } catch (err) {
+
+        logger.error(err);
+
+        return res.status(500).json({ msg: err.message });
+    }
+}
+
 
 const createAccessToken = (user) => {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' })

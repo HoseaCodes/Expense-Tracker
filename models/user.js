@@ -36,6 +36,9 @@ const UserSchema = new mongoose.Schema({
         country: String,
         zip: Number
     },
+    phone: {
+        type: Number
+    },
     online: {
         type: Boolean
     },
@@ -46,12 +49,11 @@ const UserSchema = new mongoose.Schema({
     text: {
         type: String,
         trim: true,
-        required: [true, 'Please add some text']
+        // required: [true, 'Please add some text']
     },
     isAdmin: {
         type: Boolean
     },
-
     transactions: {
         type: Array,
         default: []
