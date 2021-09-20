@@ -3,10 +3,21 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const userCtrl = {
+    getUser,
     register,
     refreshToken,
     login,
     updateProfile
+}
+
+async function getUser(req, res) {
+    try {
+        const user = await Users.findById(req.user.id).select("-password");
+        if (!user) return res.status(400).json({ msg: "User does not exist" });
+        res.json(user);
+    } catch (err) {
+        return res.status(500).json({ msg: err.message });
+    }
 }
 
 async function register(req, res) {

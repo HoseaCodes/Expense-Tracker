@@ -13,14 +13,17 @@
   "author": "Dominique Hosea",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "colors": "^1.4.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
     "mongoose": "^5.13.0",
     "morgan": "^1.10.0",
     "plaid": "^8.5.2",
+    "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
