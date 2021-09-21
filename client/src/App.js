@@ -10,6 +10,8 @@ import Access from './pages/acess';
 import Profile from './pages/profile/profile';
 import Nav from './components/nav/nav';
 import Footer from './components/footer';
+import Login from './pages/auth/login';
+import Register from './pages/auth/register';
 
 function App() {
     const [linkToken, setLinkToken] = useState(null);
@@ -19,10 +21,12 @@ function App() {
         <GlobalProvider >
             <Nav linkToken={linkToken} setLinkToken={setLinkToken} plaidData={plaidData} setPlaidData={setPlaidData} />
             <Router>
-                <Route exact path="/" render={() => <Home />} />
+                <Route exact path="/" render={() => <Home plaidData={plaidData} />} />
                 <Route exact path="/faq" render={() => <FAQ />} />
                 <Route exact path="/about" render={() => <About />} />
                 <Route exact path="/profile" render={() => <Profile />} />
+                <Route exact path="/login" render={() => <Login />} />
+                <Route exact path="/register" render={() => <Register />} />
                 <Route exact path="/manageacess" render={() => <Access />} />
                 <Route exact path="/settings" render={() => <Settings />} />
             </Router>
