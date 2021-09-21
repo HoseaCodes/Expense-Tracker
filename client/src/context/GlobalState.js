@@ -6,6 +6,7 @@ const initialState = {
     transactions: [],
     categories: [],
     user: [],
+    token: null,
     error: null,
     loading: true,
     onEdit: false
@@ -21,41 +22,60 @@ export const GlobalProvider = ({ children }) => {
     //Actions
     async function getUser(token) {
         try {
-            const res = await axios.get("/user/infor", {
+            const res = await axios.get("/user/info", {
                 headers: { Authorization: token },
             });
             dispatch({
                 type: 'GET_USER',
-                payload: res.data.data
+                payload: res.data
             })
 
         } catch (err) {
             dispatch({
                 type: 'USER_ERROR',
-                payload: err.response.data.error
+                payload: err
             })
         }
     };
+
+    async function getRefreshToken() {
+        try {
+            const res = await axios.get("/user/refresh_token");
+            dispatch({
+                type: 'REFRSH_TOKEN',
+                payload: res.data.accesstoken
+            })
+
+        } catch (err) {
+            dispatch({
+                type: 'USER_ERROR',
+                payload: err
+            })
+        }
+    };
+
     async function loginSubmit(user) {
         try {
-            const res = await axios.post("api/user/login", { ...user });
+            const res = await axios.post("/user/login", user);
             localStorage.setItem("firstLogin", true);
+            // window.location.href = "/profile";
             dispatch({
                 type: 'LOGIN_USER',
-                payload: res.data.data
+                payload: res.data.user
             })
         } catch (err) {
             dispatch({
                 type: 'USER_ERROR',
-                payload: err.response.data.error
+                payload: err
             })
         }
 
     };
+
     async function register(user) {
 
         try {
-            const res = await axios.post("api/user/register", { ...user });
+            const res = await axios.post("user/register", { ...user });
             localStorage.setItem("firstLogin", true);
             dispatch({
                 type: 'REGISTER_USER',
@@ -69,6 +89,7 @@ export const GlobalProvider = ({ children }) => {
         }
 
     };
+
     async function getTransactions() {
         try {
             const res = await axios.get('/api/transactions');
@@ -84,6 +105,7 @@ export const GlobalProvider = ({ children }) => {
             })
         }
     }
+
     async function deleteTransaction(id) {
         try {
             await axios.delete(`/api/transactions/${id}`);
@@ -100,6 +122,7 @@ export const GlobalProvider = ({ children }) => {
         }
 
     }
+
     async function addTransaction(transaction) {
         const config = {
             headers: {
@@ -187,6 +210,7 @@ export const GlobalProvider = ({ children }) => {
         transactions: state.transactions,
         categories: state.categories,
         user: state.user,
+        token: state.token,
         error: state.error,
         loading: state.loading,
         onEdit: state.onEdit,
@@ -197,6 +221,7 @@ export const GlobalProvider = ({ children }) => {
         addCategories,
         deleteCategory,
         getUser,
+        getRefreshToken,
         loginSubmit,
         register
     }}>

@@ -4,13 +4,19 @@ export default (state, action) => {
             return {
                 ...state,
                 loading: false,
-                user: action.payload
+                user: action.payload,
+            }
+        case 'REFRSH_TOKEN':
+            return {
+                ...state,
+                loading: false,
+                token: action.payload,
             }
         case 'LOGIN_USER':
             return {
                 ...state,
                 loading: false,
-                user: action.payload
+                user: [...state.user, action.payload],
             }
         case 'REGISTER_USER':
             return {
