@@ -66,9 +66,9 @@ function refreshToken(req, res) {
 
             const accesstoken = createAccessToken({ id: user.id })
 
+            // res.json({ accesstoken })
             res.json({ accesstoken })
         })
-        res.json({ rf_token })
     } catch (err) {
         return res.status(500).json({ msg: err.message })
     }
@@ -101,10 +101,11 @@ async function login(req, res) {
 
 async function updateProfile(req, res) {
     try {
-        const { isAdmin, text, role, name, avatar, username, address, phone, bio } = req.body;
-        console.log(req.body)
+        const { firstName, lastName, email, createdAt, online, transactions, isAdmin, text, role, name, avatar, username, address, phone, bio } = req.body;
+
         const user = await Users.findOneAndUpdate({ _id: req.params.id }, {
-            isAdmin, text, role, name, avatar, username, address, phone, bio
+            isAdmin, text, role, name, avatar, username, address, phone, bio,
+            firstName, lastName, email, createdAt, online, transactions,
         })
 
         res.json({
@@ -112,8 +113,6 @@ async function updateProfile(req, res) {
             user
         })
     } catch (err) {
-
-        logger.error(err);
 
         return res.status(500).json({ msg: err.message });
     }
