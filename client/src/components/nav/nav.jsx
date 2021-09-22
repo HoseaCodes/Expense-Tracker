@@ -4,7 +4,7 @@ import { VscGear } from "react-icons/vsc";
 
 const Nav = ({ linkToken, setLinkToken, plaidData, setPlaidData }) => {
     return (
-        <>
+        <nav className="nav-header">
             <header className="d-flex align-items-center px-5 flex-wrap justify-content-center py-3 border-bottom">
                 <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                     <img src="https://i.imgur.com/0UGKyoj.png" alt="" height="100px" />
@@ -32,7 +32,7 @@ const Nav = ({ linkToken, setLinkToken, plaidData, setPlaidData }) => {
 
                 </ul>
             </header>
-        </>
+        </nav>
     )
 }
 

@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(245, 243, 243);
+}
+
 .home-container {
   margin: 30px auto;
   width: 350px;
@@ -220,4 +224,17 @@ tfoot {
 
 .loginbtn {
   padding-right: 1rem;
+}
+
+nav {
+  background-color: white;
+  padding: 0% !important;
+}
+
+.nav-header {
+  position: relative;
+  z-index: 1;
+  webkit-box-shadow: 0 8px 48px 8px rgba(47, 91, 234, 0.175);
+  box-shadow: 0 8px 48px 8px rgba(47, 91, 234, 0.175);
+  padding-bottom: 60px;
 }
