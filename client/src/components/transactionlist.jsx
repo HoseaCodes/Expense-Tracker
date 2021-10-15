@@ -58,15 +58,15 @@ export const TransactionList = () => {
                 <tfoot>
                     <tr>
                         <td colspan="3">Total Liability</td>
-                        <td colspan="3">${liability}</td>
+                        <td colspan="4">${liability}</td>
                     </tr>
                     <tr>
                         <td colspan="3">Disposable Income</td>
-                        <td colspan="3">{sign}${Math.abs(disposable)}</td>
+                        <td colspan="4">{sign}${Math.abs(disposable)}</td>
                     </tr>
                     <tr>
                         <td colspan="3">Monthly Net Income</td>
-                        <td colspan="3">${income}</td>
+                        <td colspan="4">${income}</td>
                     </tr>
                 </tfoot>
             </table>
